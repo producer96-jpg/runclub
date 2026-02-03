@@ -1,0 +1,20 @@
+import React, { useEffect } from 'react';
+import mapboxgl from 'mapbox-gl';
+
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+
+const MapView: React.FC = () => {
+  useEffect(() => {
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/dark-v11',
+      center: [77.0, 19.0], // Example coords
+      zoom: 12,
+    });
+    return () => map.remove();
+  }, []);
+
+  return <div id="map" className="w-full h-screen" />;
+};
+
+export default MapView;
