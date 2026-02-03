@@ -1,0 +1,16 @@
+import express from 'express';
+import cors from 'cors';
+import authRoutes from './src/routes/authRoutes';
+import runRoutes from './src/routes/runRoutes';
+import territoryRoutes from './src/routes/territoryRoutes';
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+app.use('/api/auth', authRoutes);
+app.use('/api/runs', runRoutes);
+app.use('/api/territory', territoryRoutes);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
